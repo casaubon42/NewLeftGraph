@@ -1,8 +1,8 @@
 // Magazine and review
 CREATE (Jacobin:Magazine {title:'Jacobin', created:2011})
-CREATE ('N+1':Magazine {title:'N+1', created:2004})
+CREATE (N1:Magazine {title:'N+1', created:2004})
 CREATE
-  ('N+1')-[:PUBLISH {roles:['Edition']}]-('OccupyMag')
+  (N1)-[:PUBLISH {roles:['Edition']}]->(OccupyMag)
 CREATE (OccupyMag:Magazine {title:'Occupy!'})
 CREATE (NewLeftReview:Magazine {title:'New Left Review'})
 CREATE (Dissent:Magazine {title:'Dissent'})
@@ -45,7 +45,7 @@ CREATE (SLeonard:Person {name:'Sarah Leonard', born:1964}),
   (SLeonard)-[:CONTRIBUTE {roles:['Writer']}]->(TheNation),
   (SLeonard)-[:WRITE {roles:['Cowriter']}]->(TheFuturWeWant)
 CREATE (BKunkel:Person {name:'Benjamin Kunkel', born:972, wiki:'https://en.wikipedia.org/wiki/Benjamin_Kunkel'}),
-  (BKunkel)-[:CREATE {roles:['Cofunder']}]->('N+1'),
+  (BKunkel)-[:CREATE {roles:['Cofunder']}]->(N1),
   (BKunkel)<-[:PUBLISH {roles:['Edition']}]-(Verso)
 CREATE (IHowe:Person {name:'Irvin Howe', born:1920, died:1993, wiki:'https://en.wikipedia.org/wiki/Irving_Howe'}),
   (IHowe)-[:CREATE {roles:'Cofunder'}]->(Dissent)
@@ -78,9 +78,3 @@ CREATE (KYamahttaTaylor:Person {name:'Keeampa Yamahtta Taylor', wiki:"https://en
   (KYamahttaTaylor)-[:WRITE]->(FromBlackLivesMatterToBlackLiberation)
 CREATE (KMoody:Person {name:'Kim Moody', born:1940, wiki:"https://en.wikipedia.org/wiki/Kim_Moody"}),
   (KMoody)-[:CREATE {roles:'Cofunder'}]->(LaborNotes)
-
-
-
-
-
- 
