@@ -87,3 +87,9 @@ CREATE (JDerrida:Person {name:'Jacques Derrida', born:1930, died:2004, wiki:"htt
 CREATE (MFoucault:Person {name:'Michel Foucault', born:1926, died:1984, wiki:"https://en.wikipedia.org/wiki/Michel_Foucault"}),
   (MFoucault)-[:CREATE {roles:'Cofunder'}]->(PostStructuralism)
 CREATE (BSander:Person {name:'Bernie Sanders', born:1941, wiki:"https://en.wikipedia.org/wiki/Bernie_Sanders"})
+
+
+// MATCH (n)
+// OPTIONAL MATCH (n)-[r]-()
+// DELETE n,r
+
