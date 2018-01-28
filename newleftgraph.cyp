@@ -1,27 +1,34 @@
+//MATCH (n)
+//OPTIONAL MATCH (n)-[r]-()
+//DELETE n,r
+
 // Magazine and review
 CREATE (Jacobin:Magazine {title:'Jacobin', created:2011})
 CREATE (OccupyMag:Magazine {title:'Occupy!'})
 CREATE (N1:Magazine {title:'N+1', created:2004}),
   (N1)-[:PUBLISH {roles:['Edition']}]->(OccupyMag)
 CREATE (NewLeftReview:Magazine {title:'New Left Review'})
-CREATE (Dissent:Magazine {title:'Dissent'})
+CREATE (Dissent:Magazine {title:'Dissent', year:1954})
 CREATE (NewInquiry:Magazine {title:'The New Inquiry', created:2009})
 CREATE (TheNation:Magazine {title:'The Nation'})
 CREATE (InTheseTime:Magazine {title:'In These Time'})
-CREATE (ViewPointMag:Magazine {title:'Viewpoint Magazine'})
+CREATE (ViewPointMag:Magazine {title:'Viewpoint Magazine', year:2011})
 CREATE (LaborNotes:Magazine {title:"Labor Notes", created:1974})
 
 // Edition
 CREATE (Verso:Edition {name:'Verso'})
 
 // Book
-CREATE (TheFuturWeWant:Book {name:'The Futur We Want'})
+CREATE (TheFuturWeWant:Book {name:'The Futur We Want', year:2016})
 CREATE (DebtTheFirst5000Years:Book {name:'Debt: The First 5000 Years', year:2011})
 CREATE (FromBlackLivesMatterToBlackLiberation:Book {name:'From Black Lives Matter To Black Liberation', year:2016})
+CREATE (Indecision:Book {name:'Indecision', year:2005})
+CREATE (UtopiaOrBust:Book {name:'Utopia or Bust, a Guide to the Present Crisi', year:2011})
 
 // Movement
 CREATE (Occupy:Movement {name:'Occupy'}),
-  (Occupy)-[:PUBLISH]->(ViewPointMag)
+  (Occupy)-[:PUBLISH]->(ViewPointMag),
+  (Occupy)-[:INSPIRE]->(OccupyMag)
 CREATE (CulturalStudies:Movement {name:'Cultural Studies'})
 CREATE (IdentityPolitics:Movement {name:'Identity Politics'})
 CREATE (PostStructuralism:Movement {name:'Post-Structuralisme'})
@@ -48,6 +55,8 @@ CREATE (SLeonard:Person {name:'Sarah Leonard', born:1964}),
   (SLeonard)-[:CONTRIBUTE_TO {roles:'Writer'}]->(NewInquiry),
   (SLeonard)-[:WRITE {roles:'Cowriter'}]->(TheFuturWeWant)
 CREATE (BKunkel:Person {name:'Benjamin Kunkel', born:972, wiki:'https://en.wikipedia.org/wiki/Benjamin_Kunkel'}),
+  (BKunkel)-[:WRITE {roles:'Writer'}]->(UtopiaOrBust),
+  (BKunkel)-[:WRITE {roles:'Writer'}]->(Indecision),
   (BKunkel)-[:CREATE {roles:'Cofunder'}]->(N1),
   (BKunkel)<-[:PUBLISH {roles:'Edition'}]-(Verso)
 CREATE (IHowe:Person {name:'Irvin Howe', born:1920, died:1993, wiki:'https://en.wikipedia.org/wiki/Irving_Howe'}),
@@ -87,9 +96,4 @@ CREATE (JDerrida:Person {name:'Jacques Derrida', born:1930, died:2004, wiki:"htt
 CREATE (MFoucault:Person {name:'Michel Foucault', born:1926, died:1984, wiki:"https://en.wikipedia.org/wiki/Michel_Foucault"}),
   (MFoucault)-[:CREATE {roles:'Cofunder'}]->(PostStructuralism)
 CREATE (BSander:Person {name:'Bernie Sanders', born:1941, wiki:"https://en.wikipedia.org/wiki/Bernie_Sanders"})
-
-
-// MATCH (n)
-// OPTIONAL MATCH (n)-[r]-()
-// DELETE n,r
 
