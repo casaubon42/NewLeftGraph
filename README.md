@@ -9,10 +9,11 @@ As an exercise, use one of the Graph database available in the market to map the
  - Reviews and magazine
  - Movements
  - Books
+ - Party
 
 ## Tools
 
-The [Neo4j](https://neo4j.com) graph database engine is used. It can be easily used as it is avaiable on [AWS marketplace](https://aws.amazon.com/marketplace/pp/B071P26C9D), neo4j has been choosen especially for its GUI and graph rendering.
+The [Neo4j](https://neo4j.com) graph database engine is used. It can be easily used as it is available on [AWS marketplace](https://aws.amazon.com/marketplace/pp/B071P26C9D), neo4j has been choosen especially for its GUI and graph rendering as well as its request langage popularity (named 'cyher').
 
 
-Neo4j 3.0.1 is used.
+Neo4j 3.2.0 is used.
