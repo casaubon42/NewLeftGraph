@@ -1,4 +1,8 @@
 
+# Display everything
+`MATCH (n)
+RETURN n;`
+
 
 # Delete everything
 `MATCH (n)
